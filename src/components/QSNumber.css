@@ -1,0 +1,109 @@
+    /* 📷 Fullscreen camera view */
+    .camera-view {
+        width: 100%;
+        height: 87dvh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      /* 🔳 Scanner overlay to darken the background */
+      .scanner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      
+      /* 🔲 Scanner frame with white border */
+      .scanner-frame {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70vw;
+        height: 70vw;
+        border: 2px solid white;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+        z-index: 2;
+      }
+      
+      /* 📶 Scanning line that moves up and down */
+      .scanner-line {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #00FF00; /* Green scanning line */
+        animation: move-line 2s infinite;
+      }
+      
+      @keyframes move-line {
+        0% { top: 0; }
+        50% { top: 95%; }
+        100% { top: 0; }
+      }
+      
+      /* 🔘 Top controls (Close & Flash buttons) */
+      .top-controls {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      
+      .icon-btn {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      
+      /* 📜 Instructional text for users */
+      .instruction-text {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      
+      /* 📜 Bottom sheet (slide up) to show detected result */
+      .bottom-sheet {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30vh;
+        background-color: white;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: slide-up 0.3s ease-out;
+      }
+      
+      .bottom-sheet-content {
+        text-align: center;
+      }
+      
+      @keyframes slide-up {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0); }
+      }
+      
+      
