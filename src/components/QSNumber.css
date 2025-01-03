@@ -1,109 +1,179 @@
-    /* 📷 Fullscreen camera view */
-    .camera-view {
-        width: 100%;
-        height: 87dvh;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      
-      /* 🔳 Scanner overlay to darken the background */
-      .scanner-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.6);
-      }
-      
-      /* 🔲 Scanner frame with white border */
-      .scanner-frame {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 70vw;
-        height: 70vw;
-        border: 2px solid white;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        background-color: transparent;
-        z-index: 2;
-      }
-      
-      /* 📶 Scanning line that moves up and down */
-      .scanner-line {
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        background-color: #00FF00; /* Green scanning line */
-        animation: move-line 2s infinite;
-      }
-      
-      @keyframes move-line {
-        0% { top: 0; }
-        50% { top: 95%; }
-        100% { top: 0; }
-      }
-      
-      /* 🔘 Top controls (Close & Flash buttons) */
-      .top-controls {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-      }
-      
-      .icon-btn {
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        cursor: pointer;
-      }
-      
-      /* 📜 Instructional text for users */
-      .instruction-text {
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
-        text-align: center;
-        font-size: 16px;
-        color: white;
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-      
-      /* 📜 Bottom sheet (slide up) to show detected result */
-      .bottom-sheet {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30vh;
-        background-color: white;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: slide-up 0.3s ease-out;
-      }
-      
-      .bottom-sheet-content {
-        text-align: center;
-      }
-      
-      @keyframes slide-up {
-        0% { transform: translateY(100%); }
-        100% { transform: translateY(0); }
-      }
-      
-      
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detection-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 50px;
+  border: 2px solid #007bff;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.hidden-canvas {
+  display: none;
+}
+
+.torch-button-container {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+}
+
+/* Main container for all buttons */
+.button-container {
+  position: absolute;
+  bottom: 30px;
+  background-color: rgba(241, 239, 239, 0.8);
+  border-radius: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.button-container button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #001ed2;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+.button-container button:active {
+  background-color: #004494; /* Even darker blue on click */
+  transform: translateY(2px); /* Slight pressed effect */
+}
+
+/* .button-container .torch-button.torch-on {
+  background-color: #ff0000;
+} */
+
+.button-container .zoom-button {
+  background-color: #001ed2; /* Green background for zoom button */
+  color: white;
+}
+
+.button-container .image-click-button {
+  background-color: #001ed2; /* Blue background for capture image button */
+  color: #ffff;
+}
+
+.button-container .retry-button {
+  background-color: #001ed2; /* Red background for retry button */
+}
+
+.zoom-options {
+  position: absolute;
+  bottom: 70px;
+  left: 50%; /* This Makes sure it's aligned with the bottom */
+  display: flex;
+  flex-direction: column; /* Arrange options horizontally */
+  gap: 10px; /* Space between zoom buttons */
+}
+
+.zoom-level-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #001ed2;
+  color: #000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.zoom-level-button.active-zoom {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.text-detection {
+  position: absolute;
+  bottom: 100px; /* Push it above the buttons */
+  left: 20px;
+}
+
+.bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30vh;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slide-up 0.3s ease-out;
+}
+
+.bottom-sheet-content {
+  text-align: center;
+}
+
+.action-icon{
+    height: 20px;
+    width: 20px;
+}
+
+.square {
+  width: 250px;
+  height: 200px;
+}
+
+.hidden-canvas {
+  display: none;
+}
+
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* media Queries for responsive bo */
+/* @media (min-Width: 370px){
+    .button-container{
+        left: 27%;
+    }
+}
+
+@media (min-Width: 760px){
+    .button-container{
+        left: 34%;
+    }
+} */
