@@ -6,7 +6,7 @@ import flashOff from "../assets/flashOff.png";
 import flashOn from "../assets/flashOn.png";
 import {uploadIcon} from "../assets/index.js";
 import ImageCropModal from "./ImageCropModal/ImageCropModal.js";
-import {PATTERNS, imgTessConfig,  tesseractConfig} from './utils/QSConfig.js'
+import {PATTERNS, imgTessConfig,  tesseractConfig} from './QSConfig.js'
 const QSNumber = (props) => {
   // const { t } = useTranslation("common");
   const videoRef = useRef(null);
